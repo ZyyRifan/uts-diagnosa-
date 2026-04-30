@@ -1,13 +1,13 @@
 // Data Gejala dari Basis Pengetahuan
 const daftarGejala = [
-    { id: "G01", nama: "Layar monitor tidak menampilkan gambar (no display)" },
-    { id: "G02", nama: "Terdengar bunyi beep berulang/gagal booting" },
-    { id: "G03", nama: "Muncul layar biru dengan pesan eror (Blue Screen of Death)" },
-    { id: "G04", nama: "Komputer terasa sangat lambat saat membuka aplikasi berat" },
-    { id: "G05", nama: "Munculnya bintik-bintik, garis-garis, atau warna yang berantakan pada layar" },
-    { id: "G06", nama: "Performa grafis sangat lambat atau patah-patah (stuttering)" },
-    { id: "G07", nama: "Komputer sering membeku (hang) , freeze, lambat, terutama saat multitasking" },
-    { id: "G08", nama: "Gagal mendeteksi, seperti suara hilang, Wi-Fi tidak terhubung, atau grafis tidak berfungsi maksimal" },
+    { id: "K01", nama: "Layar monitor tidak menampilkan gambar (no display)" },
+    { id: "K02", nama: "Terdengar bunyi beep berulang/gagal booting" },
+    { id: "K03", nama: "Muncul layar biru dengan pesan eror (Blue Screen of Death)" },
+    { id: "K04", nama: "Komputer terasa sangat lambat saat membuka aplikasi berat" },
+    { id: "K05", nama: "Munculnya bintik-bintik, garis-garis, atau warna yang berantakan pada layar" },
+    { id: "K06", nama: "Performa grafis sangat lambat atau patah-patah (stuttering)" },
+    { id: "K07", nama: "Komputer sering membeku (hang) , freeze, lambat, terutama saat multitasking" },
+    { id: "K08", nama: "Gagal mendeteksi, seperti suara hilang, Wi-Fi tidak terhubung, atau grafis tidak berfungsi maksimal" },
 ];
 
 // Data Diagnosa (Kesimpulan)
@@ -15,6 +15,7 @@ const daftarDiagnosa = {
     "D01": "Diagnosa: Kerusakan pada Random Access Memory (RAM)",
     "D02": "Diagnosa: Kerusakan pada VGA Card atau kartu grafis",
     "D03": "Diagnosa: Masalah pada sistem operasi atau Driver yang korup",
+    "D04": "Diagnosa: Terlalu banyak kerusakan, beli baru aja",
 };
 
 // Fungsi memuat data gejala saat halaman dibuka
@@ -43,18 +44,25 @@ function prosesDiagnosa() {
     }
 
     let kesimpulan = "";
-
-    if (inputUser.includes("G03") && inputUser.includes("G04") && inputUser.includes("G08")) {
+    // Untuk Kasus Mendiagnosa Semua Gejala (D04)
+    if (inputUser.length === daftarGejala.length) {
+        kesimpulan = daftarDiagnosa["D04"];
+    }
+    // Rule untuk D03: K03, K04, K08
+    else if (inputUser.includes("K03") && inputUser.includes("K04") && inputUser.includes("K08")) {
         kesimpulan = daftarDiagnosa["D03"];
     } 
-    // Rule untuk D01: G02, G03, G07
-    else if (inputUser.includes("G02") && inputUser.includes("G03") && inputUser.includes("G07")) {
+    // Rule untuk D01: K02, K03, K07
+    else if (inputUser.includes("K02") && inputUser.includes("K03") && inputUser.includes("K07")) {
         kesimpulan = daftarDiagnosa["D01"];
     } 
-    // Rule untuk D02: G01, G03, G05, G06
-    else if (inputUser.includes("G01") && inputUser.includes("G03") && inputUser.includes("G05") && inputUser.includes("G06")) {
+    // Rule untuk D02: K01, K03, K05, K06
+    else if (inputUser.includes("K01") && inputUser.includes("K03") && inputUser.includes("K05") && inputUser.includes("K06")) {
         kesimpulan = daftarDiagnosa["D02"];
     } 
+    else if (inputUser.includes("K02") && inputUser.includes("K03") && inputUser.includes("K04") ) {
+        kesimpulan = daftarDiagnosa["D01"];
+    }
     else {
         kesimpulan = "Maaf, gejalanya aneh.";
     }
