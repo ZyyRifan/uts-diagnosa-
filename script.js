@@ -44,15 +44,19 @@ function prosesDiagnosa() {
 
     let kesimpulan = "";
 
-    // Logika Inferensi Forward Chaining (Aturan/Rule)
-    if (inputUser.includes("G03") || inputUser.includes("G08")) {
+    if (inputUser.includes("G03") && inputUser.includes("G04") && inputUser.includes("G08")) {
         kesimpulan = daftarDiagnosa["D03"];
-    } else if (inputUser.includes("G07") && inputUser.includes("G02")) {
+    } 
+    // Rule untuk D01: G02, G03, G07
+    else if (inputUser.includes("G02") && inputUser.includes("G03") && inputUser.includes("G07")) {
         kesimpulan = daftarDiagnosa["D01"];
-    } else if (inputUser.includes("G01") && inputUser.includes("G05") || inputUser.includes("G06")) {
+    } 
+    // Rule untuk D02: G01, G03, G05, G06
+    else if (inputUser.includes("G01") && inputUser.includes("G03") && inputUser.includes("G05") && inputUser.includes("G06")) {
         kesimpulan = daftarDiagnosa["D02"];
-    } else {
-        kesimpulan = "Maaf, kombinasi gejalanya aneh.";
+    } 
+    else {
+        kesimpulan = "Maaf, kombinasi gejala tidak cocok dengan diagnosa manapun.";
     }
 
     // Menampilkan hasil ke UI
