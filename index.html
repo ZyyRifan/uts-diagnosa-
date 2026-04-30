@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistem Pakar Diagnosa Hardware</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="container">
+    <header>
+        <h2>Diagnosa Kerusakan Komputer</h2>
+        <p>Silakan pilih gejala yang Anda temukan pada komputer Anda:</p>
+    </header>
+    
+    <div id="gejala-list" class="gejala-container">
+        <!-- Data gejala akan dimuat otomatis oleh script.js -->
+    </div>
+
+    <div class="action-area">
+        <button id="btn-diagnosa" onclick="prosesDiagnosa()">Cek Hasil Diagnosa</button>
+        <button id="btn-reset" onclick="resetForm()">Reset</button>
+    </div>
+
+    <div id="hasil-box" class="hasil-hidden">
+        <h3>Hasil Kesimpulan:</h3>
+        <p id="teks-hasil"></p>
+    </div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
