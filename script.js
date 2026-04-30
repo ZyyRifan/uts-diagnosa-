@@ -56,7 +56,7 @@ function prosesDiagnosa() {
         kesimpulan = daftarDiagnosa["D02"];
     } 
     else {
-        kesimpulan = "Maaf, kombinasi gejala tidak cocok dengan diagnosa manapun.";
+        kesimpulan = "Maaf, gejalanya aneh.";
     }
 
     // Menampilkan hasil ke UI
